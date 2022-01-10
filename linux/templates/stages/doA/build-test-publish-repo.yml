@@ -1,0 +1,7 @@
+parameters:
+
+stages:
+- template: ../build-test-publish-repo.yml
+  parameters:
+
+  

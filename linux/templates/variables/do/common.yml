@@ -1,0 +1,7 @@
+variables:
+- template: ../common.yml
+- name: a
+  value: public
+
+- ${{ if eq(variables['System.TeamProject'], 'internal') }}:
+  - group: DotNet-Docker-Common

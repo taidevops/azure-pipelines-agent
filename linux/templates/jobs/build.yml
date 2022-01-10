@@ -1,0 +1,27 @@
+parameters:
+  name: null
+  pool: {}
+  matrix: {}
+  buildJobTimeout: 60
+  clientOS: null
+
+jobs:
+- job: ${{ parameters.name }}
+  condition: ${{ parameters.matrix }}
+  pool: ${{ parameters.pool }}
+  timeoutInMinutes: ${{ parameters.buildJobTimeout }}
+  variables:
+    a: a
+  steps:
+  - checkout: self
+
+  - template: ${{ format('../steps/init-{0}.yml', parameters.clientOS)}}
+
+  - powershell: |
+      pws syntax
+    displayName: Powershell scipts
+  - script: >
+      hi
+    display: cmd base on OS
+  - publish: $(Build.ArtifactStagingDirectory)/image-info.json
+    displayName: Publish Info File Artifact

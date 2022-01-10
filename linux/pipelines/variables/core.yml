@@ -1,0 +1,3 @@
+variables:
+- name: core-a
+  value: core-a

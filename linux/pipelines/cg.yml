@@ -1,0 +1,21 @@
+trigger: none
+pr: none
+
+schedules:
+- cron: "0 12 * * Sun"
+  displayName: Weekend build
+  branches:
+    include:
+    - main
+    - nightly
+  always: true
+
+jobs:
+- job: Scan
+  pool:
+    name: ubuntu
+  steps:
+  - script: >
+      date
+    displayName: show date
+    name: Date

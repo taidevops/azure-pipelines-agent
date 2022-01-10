@@ -1,0 +1,24 @@
+parameters:
+  linuxAmd64Pool:
+    vmImage: $(defaultLinuxAmd64PoolImage)
+
+stages:
+
+################################################################################
+# Build
+################################################################################
+- stage: Build
+  condition: succeeded()
+  jobs:
+  - template: ../jobs/build.yml
+    parameters:
+      name: PreBuildValidation
+      pool: ${{ parameters.linuxAmd64Pool }}
+
+# - stage: Test
+#   dependsOn: Build
+#   jobs:
+
+# - stage: Publish
+#   dependsOn: Test
+#   jobs:

@@ -1,0 +1,7 @@
+variables:
+- template: common-paths.yml
+
+- name: defaultLinuxAmd64PoolImage
+  value: ubuntu-latest
+- name: test
+  value: ubuntu-latest
